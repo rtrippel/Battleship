@@ -1,24 +1,26 @@
-// import './Header.css'; //
+import './Header.css';
+import MenuIcon from '@mui/icons-material/Menu';
+import { styled } from '@mui/material/styles';
+import {Link} from "react-router-dom";
+
+const MenuIconStyled = styled(MenuIcon)({
+    fontSize: '5rem',
+    color: '#FFF568'
+});
 
 function Header() {
     return (
         <header className="header">
             <div className="logo">
-                <img src="/path/to/logo.png" alt="Logo"/>
+                <Link to="/about-project">
+                <img src="src/assets/images/logo_round_yellow.png" alt="Logo"/>
+                </Link>
             </div>
             <div className="title">
                 <h1>Battleship</h1>
             </div>
             <div className="menu-icon">
-                <svg
-                    className="hamburger-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                >
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
+                <MenuIconStyled />
             </div>
         </header>
     );

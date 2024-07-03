@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: #6bca6b;
+}
+
+.logo img {
+    height: 5rem;
+}
+
+.logo img, .menu-icon {
+    cursor: pointer;
+}
+
+.title {
+    color: #ed0000;
+}
