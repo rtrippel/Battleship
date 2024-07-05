@@ -6,14 +6,35 @@
     background-color: #6bca6b;
 }
 
-.logo img {
-    height: 5rem;
-}
-
 .logo img, .menu-icon {
     cursor: pointer;
 }
 
 .title {
     color: #ed0000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.logo a {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    vertical-align: middle;
+}
+
+.logo img {
+    height: 4rem;
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
 }
