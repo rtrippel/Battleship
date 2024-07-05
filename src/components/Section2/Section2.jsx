@@ -1,9 +1,9 @@
 function Section2() {
 
   return (
-      <>
-        <h2>Section2</h2>
-      </>
+      <section className="container">
+          <button>Login</button>
+      </section>
   )
 }
 

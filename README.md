@@ -1,7 +1,42 @@
 # ReDI school - Final Project
 
 ## Battleship
+### [This site is live here](https://game.romantrippel.com/)
 
-### [This site is live here](https://rtrippel.github.io/Battleship/)
+### Wiki:
+https://en.wikipedia.org/wiki/Battleship_(game)
 
-[![ScreenShot](src/assets/project_structure/main-gif.gif)](https://rtrippel.github.io/Battleship/)
+[![ScreenShot](public/assets/images/main-gif.gif)](https://game.romantrippel.com/)
+
+
+## Technologies
+
+### Frontend:
+    -   HTML5
+    -   CSS
+    -   JavaScript
+    -   React
+    -   Vite
+    -   AWS Amplify
+
+
+### Backend:
+    -   Java
+    -   TypeScript
+    -   Kotlin
+    -   AWS EC2
+    -   Docker
+    -   PostgreSQL
+
+### Communication:
+    -   WebSocket (for real-time communication)
+    -   REST API (for backend interaction)
+
+## Author
+
+Roman Trippel
+
+**e-mail:** [mail@romantrippel.com](mailto:mail@romantrippel.com)
+
+
+**LinkedIn:** [www.linkedin.com/in/roman-trippel](https://www.linkedin.com/in/roman-trippel)

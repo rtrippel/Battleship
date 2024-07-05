@@ -1,9 +1,10 @@
+import './Section1.css';
+
 function Section1() {
 
   return (
-    <>
-    <h2>Section1</h2>
-    </>
+    <section className="main-picture-bg">
+    </section>
   )
 }
 
