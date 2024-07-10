@@ -1,8 +1,12 @@
+import {Link} from "react-router-dom";
+
 function Section2() {
 
   return (
       <section className="container">
-          <button>Login</button>
+          <Link to="/game">
+              <button>Login</button>
+          </Link>
       </section>
   )
 }

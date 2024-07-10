@@ -6,6 +6,7 @@ import AboutProject from "../AboutProject/AboutProject.jsx";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import AboutMe from "../AboutMe/AboutMe.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
+import Game from "../Game/Game.jsx";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Header/>
             <Routes>
                 <Route path="/" element={<Body/>}/>
+                <Route path="/game" element={<Game/>}/>
                 <Route path="/about-project" element={<AboutProject/>}/>
                 <Route path="/about-me" element={<AboutMe/>}/>
                 <Route path="*" element={<NotFound />} />

@@ -1,12 +1,18 @@
-# ReDI school - Final Project
+# ReDI school - Final Project - FRONTEND
 
 ## Battleship
-### [This site is live here](https://game.romantrippel.com/)
+### [This site is live here](https://battleship.romantrippel.com/)
+
+
+##Links:
+### [Backend Java](https://github.com/rtrippel/Battleship-Java-back)
+### [Backend TypeScript](https://github.com/rtrippel/Battleship-TypeScript-back)
+### Backend Kotlin
 
 ### Wiki:
 https://en.wikipedia.org/wiki/Battleship_(game)
 
-[![ScreenShot](public/assets/images/main-gif.gif)](https://game.romantrippel.com/)
+[![ScreenShot](public/assets/images/main-gif.gif)](https://battleship.romantrippel.com/)
 
 
 ## Technologies
