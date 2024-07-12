@@ -1,63 +1,58 @@
 import './Game.css';
 import { useState, useEffect, useRef } from 'react';
+import useChat from '../../hooks/useChat'; // Проверьте, что здесь правильный путь к вашему хуку useChat
+import { useLocation } from 'react-router-dom';
 
 const Game = () => {
-    const [messages, setMessages] = useState([]);
+    const location = useLocation();
+    const { name } = location.state || {};
+    const { messages, sendMessage } = useChat(); // Добавляем функцию getChatHistory из хука useChat
     const [inputValue, setInputValue] = useState('');
-    const socket = useRef(null);
+    const [isStarted] = useState(!!name);
+    const chatWindowRef = useRef(null);
+    const gameId = "111"
 
     useEffect(() => {
-        // Получение истории чата при загрузке компонента
-        fetch('https://api.battleship.romantrippel.com:3000/messages') // Изменено на HTTPS
-            .then(response => response.json())
-            .then(data => {
-                setMessages(data);
-            })
-            .catch(error => {
-                console.error('Error fetching chat history:', error);
-            });
+        if (chatWindowRef.current) {
+            chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+        }
+    }, [messages]);
 
-        // Установка WebSocket соединения
-        socket.current = new WebSocket('wss://api.battleship.romantrippel.com:3000'); // Изменено на WSS
-        socket.current.onmessage = event => {
-            const newMessage = JSON.parse(event.data);
-            setMessages(prevMessages => [...prevMessages, newMessage]);
-        };
-
-        // Очистка при размонтировании компонента
-        return () => {
-            if (socket.current) {
-                socket.current.close();
-            }
-        };
-    }, []);
-
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        if (inputValue.trim()) {
-            const newMessage = { id: Date.now(), content: inputValue }; // Создание нового сообщения
-            // Отправка сообщения через WebSocket
-            socket.current.send(JSON.stringify({ message: inputValue }));
-            setMessages(prevMessages => [...prevMessages, newMessage]); // Добавление нового сообщения в состояние
+        if (inputValue.trim() && isStarted) {
+            sendMessage(name, inputValue, gameId);
             setInputValue('');
         }
     };
 
     return (
         <div>
-            <div id="chat-window" style={{ border: '1px solid black', height: '300px', overflowY: 'scroll', padding: '10px' }}>
+            <div id="game-selection" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '20px 0' }}>
+                <button style={{ width: '200px', height: '50px', marginRight: '20px' }}>Random Game</button>
+                <input type="text" placeholder="Game with a friend" style={{ width: '200px', height: '30px', marginRight: '20px' }} />
+            </div>
+            <div
+                id="chat-window"
+                ref={chatWindowRef}
+                style={{ border: '1px solid black', height: '300px', overflowY: 'scroll', padding: '10px' }}
+            >
                 {messages.map((msg) => (
-                    <div key={msg.id}>{msg.content}</div>
+                    <div key={msg.id}>
+                        <strong>{msg.name}:</strong> {msg.content}
+                        <div><small>{new Date(msg.timestamp).toLocaleString()}</small></div>
+                    </div>
                 ))}
             </div>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
+                    onChange={(e) => setInputValue(e.target.value)}
                     style={{ width: '80%' }}
+                    disabled={!isStarted}
                 />
-                <button type="submit" style={{ width: '20%' }}>Send</button>
+                <button type="submit" style={{ width: '20%' }} disabled={!isStarted}>Send</button>
             </form>
         </div>
     );

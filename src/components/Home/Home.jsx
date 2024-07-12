@@ -1,8 +1,8 @@
-import './Body.css';
+import './Home.css';
 import Section1 from "../Section1/Section1.jsx";
 import Section2 from "../Section2/Section2.jsx";
 
-function Body() {
+function Home() {
 
   return (
     <div className="container">
@@ -12,4 +12,4 @@ function Body() {
   )
 }
 
-export default Body
+export default Home
