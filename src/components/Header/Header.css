@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
     background-color: #6bca6b;
 }
 
@@ -14,13 +14,6 @@
     color: #ed0000;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
 .logo a {
     display: inline-block;
     margin: 0;
@@ -30,9 +23,7 @@
 }
 
 .logo img {
-    height: 4rem;
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 8vh;
     display: block;
     margin: 0;
     padding: 0;

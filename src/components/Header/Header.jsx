@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import logoImage from '/assets/images/logo_round_yellow.png';
 
 const MenuIconStyled = styled(MenuIcon)({
-    fontSize: '5rem',
+    fontSize: '10vh',
     color: '#FFF568'
 });
 

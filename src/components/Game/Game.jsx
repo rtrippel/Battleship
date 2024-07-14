@@ -27,16 +27,25 @@ const Game = () => {
     };
 
     return (
-        <div>
-            <div id="game-selection" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '20px 0' }}>
-                <button style={{ width: '200px', height: '50px', marginRight: '20px' }}>Random Game</button>
-                <input type="text" placeholder="Game with a friend" style={{ width: '200px', height: '30px', marginRight: '20px' }} />
+        <main>
+            <div id="game-selection"
+                 style={{display: 'flex', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                <button style={{width: '40%', height: '80%', marginRight: '20px'}}>Random Game</button>
+                <input type="text" placeholder="Game with a friend"
+                       style={{width: '200px', height: '80%', marginRight: '20px'}}/>
             </div>
             <div
                 id="chat-window"
                 ref={chatWindowRef}
-                style={{ border: '1px solid black', height: '300px', overflowY: 'scroll', padding: '10px' }}
+                style={{border: '1px solid black', width: '90%', overflowY: 'scroll', padding: '1rem'}}
             >
+                <h2 style={{
+                    textAlign: 'center',
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: 1,
+                }}>Shared Chat</h2>
+
                 {messages.map((msg) => (
                     <div key={msg.id}>
                         <strong>{msg.name}:</strong> {msg.content}
@@ -44,17 +53,20 @@ const Game = () => {
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    style={{ width: '80%' }}
-                    disabled={!isStarted}
-                />
-                <button type="submit" style={{ width: '20%' }} disabled={!isStarted}>Send</button>
-            </form>
-        </div>
+            <div style={{width: '90%'}}>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={inputValue}
+                        style={{width: '70%'}}
+                        onChange={(e) => setInputValue(e.target.value)}
+
+                        disabled={!isStarted}
+                    />
+                    <button type="submit" style={{width: '20%'}} disabled={!isStarted}>Send</button>
+                </form>
+            </div>
+        </main>
     );
 };
 

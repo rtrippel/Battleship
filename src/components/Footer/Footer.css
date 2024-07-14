@@ -1,14 +1,10 @@
 .footer {
     display: flex;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     align-items: center;
     text-align: center;
     justify-content: space-between;
     padding: 0 1rem;
     background-color: rgba(68, 101, 68, 0.62);
-    width: 100%;
 }
 
 .about-project  {

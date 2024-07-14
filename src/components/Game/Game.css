@@ -1,8 +1,0 @@
-.main-picture-bg {
-    height: 50vh;
-    width: 100vw;
-    background-image: url(/public/assets/images/main.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}

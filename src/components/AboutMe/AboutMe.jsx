@@ -1,10 +1,10 @@
 function AboutMe() {
     return (
-        <div>
+        <main style={{ overflowY: 'auto',}}>
             <h1>About Me</h1>
             <p>This is the about Roman Trippel.</p>
             <a href={"https://www.linkedin.com/in/roman-trippel/"}>LinkedIn</a>
-        </div>
+        </main>
     );
 }
 
