@@ -1,55 +1,48 @@
 import './Home.css';
-import Modal from "react-modal";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ModalWindow from '../ModalWindow/ModalWindow.jsx';
+import { motion } from 'framer-motion';
+import { buttonHoverAnimation } from '../../animations/animations';
 
-function Home() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [name, setName] = useState('');
+const Home = () => {
+    const [isModalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
 
-    const handlePlayClick = () => {
-        setIsModalOpen(true);
+    const openModal = () => {
+        setModalOpen(true);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setIsModalOpen(false);
-        navigate('/game', { state: { name } });
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    const navigateToGame = () => {
+        setModalOpen(false);
+        navigate('/game');
     };
 
     return (
-    <main>
-        <section className="main-picture-bg">
-        </section>
+        <main className="Home">
+            <section className="Home__picture-background"></section>
+            <section className="Home__button-container">
+                <motion.button
+                    onClick={openModal}
+                    className="Home__button text"
+                    whileHover={buttonHoverAnimation.whileHover}
+                    whileTap={buttonHoverAnimation.whileTap}
+                    transition={buttonHoverAnimation.transition}
+                >
+                    Play
+                </motion.button>
+                <ModalWindow
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    handleSubmit={navigateToGame}
+                />
+            </section>
+        </main>
+    );
+};
 
-        <section className="main-buttons">
-            <button onClick={handlePlayClick}>Play</button>
-
-            <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
-                <div className="modal-content">
-                    <h2 style={{textAlign: 'center'}}>Hello. To enter the game, please enter your player
-                        name/nickname</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            Name/Nickname:
-                            <input
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            />
-                        </label>
-                        <div className="modal-buttons">
-                            <button type="submit">Submit</button>
-                            <button type="button" onClick={() => setIsModalOpen(false)}>Cancel</button>
-                        </div>
-                    </form>
-                </div>
-            </Modal>
-        </section>
-    </main>
-  )
-}
-
-export default Home
+export default Home;

@@ -4,15 +4,42 @@
     text-align: center;
     justify-content: space-between;
     padding: 0 1rem;
-    background-color: rgba(68, 101, 68, 0.62);
+    background-color: var(--footer-background-color);
+    z-index: 999;
 }
 
-.about-project  {
+.footer__section {
     text-align: center;
+}
+
+.footer__section--about-project {
     flex: 0 0 65%;
 }
 
-.about-me {
-    text-align: center;
+.footer__section--about-developer {
     flex: 0 0 35%;
+}
+
+.footer__link {
+    color: var(--footer-link-color);
+    text-decoration: none;
+    text-shadow: 10px 10px 6px var(--footer-link-shadow-color);
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+    color: var(--footer-link-hover-color);
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: var(--footer-background-color);
+}
+
+.footer h3 {
+    font-size: 2vh;
 }

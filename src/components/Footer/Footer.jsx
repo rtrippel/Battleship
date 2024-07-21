@@ -1,21 +1,21 @@
-import './Footer.css'
-import {Link} from "react-router-dom";
-function Footer() {
+import './Footer.css';
+import { Link } from "react-router-dom";
 
-  return (
-    <footer className="footer">
-      <div className="about-project">
-          <Link to="/about-project">
-        <h3>About Project</h3>
-          </Link>
-      </div>
-        <div className="about-me">
-            <Link to="/about-me">
-            <h3>About Me</h3>
-            </Link>
-        </div>
-    </footer>
-  )
+function Footer() {
+    return (
+        <footer className="footer">
+            <div className="footer__section footer__section--about-project">
+                <Link to="/about-project" className="footer__link">
+                    <h3>About the Project</h3>
+                </Link>
+            </div>
+            <div className="footer__section footer__section--about-developer">
+                <Link to="/about-developer" className="footer__link">
+                    <h3>About the Developer</h3>
+                </Link>
+            </div>
+        </footer>
+    );
 }
 
-export default Footer
+export default Footer;

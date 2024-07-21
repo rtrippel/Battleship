@@ -1,5 +1,5 @@
-.main-picture-bg {
-    height: 70vh;
+.Home__picture-background {
+    height: 60vh;
     width: 70vw;
     background-image: url(/public/assets/images/main.jpg);
     background-size: contain;
@@ -7,25 +7,6 @@
     background-position: center;
 }
 
-.main-buttons {
-    height: 50%;
-}
-
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.modal-buttons button {
-    margin: 0 5px;
+.Home__button-container {
+    height: 20%;
 }

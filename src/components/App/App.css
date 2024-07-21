@@ -2,14 +2,32 @@
     box-sizing: border-box;
 }
 
-html, body {
+html {
     height: 100%;
     width: 100%;
     margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color-red: #ed0000;
+    --primary-color-yellow: #FFF568;
+    --primary-menu-background-color: #333;
+    --primary-nav-background-color: #6bca6b;
+    --primary-body-background-color: #c3dbe3;
+    --footer-background-color: rgba(68, 101, 68, 0.62);
+    --footer-link-color: black;
+    --footer-link-hover-color: green;
+    --footer-link-shadow-color: rgba(0, 0, 0, 0.3);
+    --primary-text-color: #333;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+    --text-shadow-color: rgba(0, 0, 0, 0.3);
+    --link-background-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
-    background-color: #c3dbe3;
+    background-color: var(--primary-body-background-color);
 }
 
 header, footer {
@@ -33,10 +51,61 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
-    gap: 2rem;
-    margin-top: calc(var(--vh, 1vh) * 10); /* 10vh */
-    margin-bottom: calc(var(--vh, 1vh) * 5); /* 5vh */
+    padding: 2rem 2rem;
     overflow: auto;
     height: calc(var(--vh, 1vh) * 100 - calc(var(--vh, 1vh) * 15)); /* 100vh - (10vh + 5vh) */
+}
+
+button {
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    background: linear-gradient(70deg, rgba(194, 244, 220, 0.74), #00d2ff);
+    background-size: 600% 600%;
+    border: none;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    animation: gradientAnimation 10s ease infinite;
+    transition: background 0.9s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, var(--primary-nav-background-color), greenyellow, #07ec47);
+    background-size: 600% 600%;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.text {
+    font-family: 'Chalkboard SE', cursive;
+    font-size: 1.5em;
+    color: var(--primary-color-red);
+    animation: textColorChange 5s ease infinite;
+}
+
+@keyframes textColorChange {
+    0% {
+        color: var(--primary-color-red);
+    }
+    25% {
+        color: #ff6600;
+    }
+    50% {
+        color: #ffcc00;
+    }
+    75% {
+        color: #33cc33;
+    }
+    100% {
+        color: var(--primary-color-red);
+    }
 }

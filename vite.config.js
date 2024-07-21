@@ -10,5 +10,15 @@ export default defineConfig({
         { src: 'src/assets/*', dest: 'assets/' }
       ]
     })
-  ]
+  ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://localhost:3000',
+        changeOrigin: true,
+        secure: false, // Disable SSL verification for development
+        rewrite: path => path.replace(/^\/api/, '')
+      }
+    }
+  }
 });

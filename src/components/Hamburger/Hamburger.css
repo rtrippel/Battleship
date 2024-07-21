@@ -1,0 +1,14 @@
+.Hamburger {
+    width: 6vh;
+    height: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.Hamburger__line {
+    width: 100%;
+    height: 1vh;
+    background-color: var(--primary-color-yellow);
+}

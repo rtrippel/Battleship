@@ -1,71 +1,53 @@
 import './Game.css';
-import { useState, useEffect, useRef } from 'react';
-import useChat from '../../hooks/useChat'; // Проверьте, что здесь правильный путь к вашему хуку useChat
-import { useLocation } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import useChat from '../../hooks/useChat';
+import GameSelection from '../GameSelection/GameSelection.jsx';
+import ModalWindow from '../ModalWindow/ModalWindow.jsx';
+import ChatWindow from '../ChatWindow/ChatWindow.jsx';
+import { AppContext } from '../../context/AppContext.jsx';
 
 const Game = () => {
-    const location = useLocation();
-    const { name } = location.state || {};
-    const { messages, sendMessage } = useChat(); // Добавляем функцию getChatHistory из хука useChat
+    const { name, setName } = useContext(AppContext);
+    const { messages, sendMessage } = useChat();
     const [inputValue, setInputValue] = useState('');
-    const [isStarted] = useState(!!name);
-    const chatWindowRef = useRef(null);
-    const gameId = "111"
+    const [isStarted, setIsStarted] = useState(!!name);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    useEffect(() => {
-        if (chatWindowRef.current) {
-            chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
-        }
-    }, [messages]);
+    const handleLoginClick = () => {
+        setIsModalOpen(true);
+    };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (inputValue.trim() && isStarted) {
-            sendMessage(name, inputValue, gameId);
-            setInputValue('');
+    const handleLoginSubmit = () => {
+        if (name.trim()) {
+            setIsStarted(true);
+            setIsModalOpen(false);
+        } else {
+            alert('Please enter your name.');
         }
     };
 
     return (
-        <main>
-            <div id="game-selection"
-                 style={{display: 'flex', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
-                <button style={{width: '40%', height: '80%', marginRight: '20px'}}>Random Game</button>
-                <input type="text" placeholder="Game with a friend"
-                       style={{width: '200px', height: '80%', marginRight: '20px'}}/>
-            </div>
-            <div
-                id="chat-window"
-                ref={chatWindowRef}
-                style={{border: '1px solid black', width: '90%', overflowY: 'scroll', padding: '1rem'}}
-            >
-                <h2 style={{
-                    textAlign: 'center',
-                    position: 'sticky',
-                    top: 0,
-                    zIndex: 1,
-                }}>Shared Chat</h2>
-
-                {messages.map((msg) => (
-                    <div key={msg.id}>
-                        <strong>{msg.name}:</strong> {msg.content}
-                        <div><small>{new Date(msg.timestamp).toLocaleString()}</small></div>
-                    </div>
-                ))}
-            </div>
-            <div style={{width: '90%'}}>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        value={inputValue}
-                        style={{width: '70%'}}
-                        onChange={(e) => setInputValue(e.target.value)}
-
-                        disabled={!isStarted}
+        <main className="game">
+            {isStarted ? (
+                <GameSelection setIsStarted={setIsStarted} />
+            ) : (
+                <section className="game__login-button">
+                    <button className="modal-button" onClick={handleLoginClick}>Login</button>
+                    <ModalWindow
+                        isOpen={isModalOpen}
+                        onRequestClose={() => setIsModalOpen(false)}
+                        handleSubmit={handleLoginSubmit}
                     />
-                    <button type="submit" style={{width: '20%'}} disabled={!isStarted}>Send</button>
-                </form>
-            </div>
+                </section>
+            )}
+            <ChatWindow
+                messages={messages}
+                name={name}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+                sendMessage={sendMessage}
+                isStarted={isStarted}
+            />
         </main>
     );
 };

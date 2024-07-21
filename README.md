@@ -4,7 +4,7 @@
 ### [This site is live here](https://battleship.romantrippel.com/)
 
 
-##Links:
+## Links:
 ### [Backend Java](https://github.com/rtrippel/Battleship-Java-back)
 ### [Backend TypeScript](https://github.com/rtrippel/Battleship-TypeScript-back)
 ### Backend Kotlin

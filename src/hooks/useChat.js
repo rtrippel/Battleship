@@ -4,9 +4,18 @@ const useChat = () => {
     const [messages, setMessages] = useState([]);
     const socket = useRef(null);
 
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const apiPort = import.meta.env.VITE_API_PORT;
+
     useEffect(() => {
-        // Получение истории чата при загрузке компонента
-        fetch('https://api.battleship.romantrippel.com:3000/messages')
+        // Ensure environment variables are available
+        if (!apiUrl || !apiPort) {
+            console.error('API URL or Port is not defined in environment variables');
+            return;
+        }
+
+        // Fetch chat history on component load
+        fetch(`https://${apiUrl}:${apiPort}/messages`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -16,20 +25,20 @@ const useChat = () => {
                 console.error('Error fetching chat history:', error);
             });
 
-        // Установка WebSocket соединения
-        socket.current = new WebSocket('wss://api.battleship.romantrippel.com:3000');
+        // Set up WebSocket connection
+        socket.current = new WebSocket(`wss://${apiUrl}:${apiPort}`);
         socket.current.onmessage = event => {
             const newMessage = JSON.parse(event.data);
             setMessages(prevMessages => [...prevMessages, newMessage]);
         };
 
-        // Очистка при размонтировании компонента
+        // Clean up on component unmount
         return () => {
             if (socket.current) {
                 socket.current.close();
             }
         };
-    }, []);
+    }, [apiUrl, apiPort]);
 
     const sendMessage = (name, content, game_id) => {
         if (content.trim() && name.trim()) {

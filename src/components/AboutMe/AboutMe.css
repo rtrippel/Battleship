@@ -1,0 +1,40 @@
+.about-me {
+    position: relative;
+    padding: 2rem;
+    background-color: var(--primary-body-background-color);
+    color: var(--primary-text-color);
+    z-index: 1;
+}
+
+.about-me__content {
+    max-width: 60%;
+    text-align: left;
+}
+
+.about-me__content p {
+    font-size: clamp(1rem, 4vw, 1.5rem); /* Минимум 1rem, предпочтительно 4vw, максимум 1.2rem */
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.about-me__link-container {
+    position: absolute;
+    right: 5vw;
+    top: 50vh;
+    transform: translateY(-50%);
+    background-color: var(--link-background-color);
+    padding: 2vh;
+    border-radius: 0 0 0 20px;
+}
+
+.about-me__link {
+    color: var(--link-color);
+    text-decoration: none;
+    text-shadow: 1vw 1vw 2px var(--text-shadow-color);
+    font-size: 3vw;
+}
+
+.about-me__link:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}

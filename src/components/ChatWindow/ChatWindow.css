@@ -1,63 +1,66 @@
-.game {
+.chat-window-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    gap: 1rem;
-    overflow: auto;
-    height: calc(var(--vh, 1vh) * 100 - calc(var(--vh, 1vh) * 15)); /* 100vh - (10vh + 5vh) */
-    background-color: var(--primary-body-background-color);
-    color: var(--primary-text-color);
-}
-
-.game__login-button {
-    height: 10%;
-}
-
-.game__chat-window {
-    border: 1px solid var(--primary-color-red);
-    width: 90%;
-    overflow-y: scroll;
     padding: 1rem;
+    box-sizing: border-box;
 }
 
-.game__chat-header {
+.chat-window {
+    width: 100%;
+    height: 60vh;
+    border: 1px solid var(--primary-color-red);
+    overflow-y: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: var(--primary-body-background-color);
+}
+
+.chat-header {
+    width: 40%;
+    margin: 0 auto;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: var(--primary-body-background-color);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 2rem 2rem;
+    line-height: 2;
+    font-size: 3vw;
+
 }
 
-.game__message {
+.chat-message {
     margin-bottom: 1rem;
 }
 
-.game__message-author {
+.message-author {
     font-weight: bold;
 }
 
-.game__message-timestamp {
+.message-timestamp {
     font-size: 0.8rem;
     color: var(--primary-color-red);
 }
 
-.game__form {
-    width: 90%;
+.chat-form {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    box-sizing: border-box;
 }
 
-.game__input {
+.chat-input {
     width: 70%;
     padding: 0.5rem;
     border: 1px solid var(--primary-color-red);
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.game__button {
+.chat-button {
     width: 20%;
     padding: 0.5rem;
     background-color: var(--primary-color-red);
@@ -66,19 +69,14 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
-.game__button:hover {
+.chat-button:hover {
     background-color: var(--primary-color-yellow);
 }
 
-.game__button:disabled {
+.chat-button:disabled {
     background-color: var(--footer-link-shadow-color);
     cursor: not-allowed;
-}
-
-.modal-button {
-    font-size: 1rem;
-    padding: 0.5rem;
 }
